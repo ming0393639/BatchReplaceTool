@@ -1,0 +1,71 @@
+﻿<Window
+    x:Class="BatchReplace.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BatchReplace"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="BatchReplace"
+    Width="500"
+    Height="300"
+    mc:Ignorable="d">
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0">Files:</Label>
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="1"
+            Orientation="Horizontal">
+            <Button
+                Margin="0,0,5,0"
+                HorizontalAlignment="Left"
+                Click="AddBtn_Click">
+                Add
+            </Button>
+            <Button
+                Margin="0,0,5,0"
+                HorizontalAlignment="Left"
+                Click="DelBtn_Click">
+                Del
+            </Button>
+        </StackPanel>
+        <ListBox
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="5"
+            ItemsSource="{Binding FilePathList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto"
+            SelectedIndex="{Binding Selectedindex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" />
+        <Label Grid.Row="2" Grid.Column="0">Target String:</Label>
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="5,2,5,2"
+            Text="{Binding TargetString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" />
+        <Label Grid.Row="3" Grid.Column="0">Replace by:</Label>
+        <TextBox
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="5,2,5,2"
+            Text="{Binding ReplaceString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="1"
+            Margin="0,0,5,0"
+            HorizontalAlignment="Right"
+            Click="ReplaceBtn_Click">
+            Replace
+        </Button>
+    </Grid>
+</Window>
